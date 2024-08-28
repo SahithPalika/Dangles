@@ -188,6 +188,8 @@ class OpenAIClient(AIClient):
             block_description: str):
         messages = [{'role': 'user', 'content': block_description}]
         response = self.__chat_completion_request(messages)
+        print('*************************************')
+        print(response)
         arguments = response.choices[0].message.tool_calls[0].function.arguments
         if arguments:
             function_args = json.loads(arguments)
